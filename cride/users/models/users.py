@@ -9,7 +9,6 @@ from django.core.validators import RegexValidator
 from cride.utils.models import CrideModel
 
 
-
 class User(CrideModel, AbstractUser):
 
 
@@ -25,7 +24,7 @@ class User(CrideModel, AbstractUser):
         regex=r'\+?1?\d{9,15}$'
     )
 
-    phone_number = models.CharField(max_length=17, blank=True, validators=phone_regex)
+    phone_number = models.CharField(max_length=17, blank=True, validators=[phone_regex])
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = ["username", "first_name", "last_name"]

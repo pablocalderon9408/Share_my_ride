@@ -4,7 +4,7 @@
 # Django
 from django.db import models
 
-class CrideModel(models.model):
+class CrideModel(models.Model):
     """Comparte Ride base model.
     CrideModel acts as an abstract base class from which every other model in the project will inherit,
     providing created and modified fields."""
