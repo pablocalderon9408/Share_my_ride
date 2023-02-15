@@ -7,8 +7,7 @@ from cride.utils.models import CrideModel
 
 class Circle(CrideModel):
     """Circle model.
-    
-    A circle is a private group where rides are offered and taken 
+    A circle is a private group where rides are offered and taken
     by its members. """
 
     name = models.CharField(
@@ -64,4 +63,3 @@ class Circle(CrideModel):
     class Meta(CrideModel.Meta):
 
         ordering = ["-rides_taken", "-rides_offered"]
-

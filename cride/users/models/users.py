@@ -11,6 +11,10 @@ from cride.utils.models import CrideModel
 
 class User(CrideModel, AbstractUser):
 
+    """User model.
+    Extends from django abstract user, change the username field to
+    email and add some extra fields.
+    """
 
     email = models.EmailField(
         help_text="email address",
@@ -21,7 +25,8 @@ class User(CrideModel, AbstractUser):
     )
 
     phone_regex = RegexValidator(
-        regex=r'\+?1?\d{9,15}$'
+        regex=r'\+?1?\d{9,15}$',
+        message="Phone number must be enered in the format: +999999999999. Up to 15 digits allowed"
     )
 
     phone_number = models.CharField(max_length=17, blank=True, validators=[phone_regex])
