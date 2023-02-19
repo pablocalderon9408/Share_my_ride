@@ -8,6 +8,10 @@ psycopg2==2.7.4 --no-binary psycopg2
 django>=2.0.10
 djangorestframework==3.13.1
 django-utils-six==2.0
+django-anymail==9.0
+
+# JWT
+pyjwt==2.4.0
 
 # Environment
 django-environ==0.4.5
