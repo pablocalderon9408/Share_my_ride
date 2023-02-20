@@ -31,6 +31,13 @@ class Circle(CrideModel):
         null=True
     )
 
+    # Memberships
+    members = models.ManyToManyField(
+        "users.User",
+        through="circles.Membership",
+        through_fields=("circle", "user")
+    )
+
     # Stats
     rides_offered = models.PositiveBigIntegerField(default=0)
     rides_taken = models.PositiveBigIntegerField(default=0)

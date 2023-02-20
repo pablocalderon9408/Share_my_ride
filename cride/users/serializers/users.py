@@ -21,14 +21,20 @@ from django.conf import settings
 # Models
 from cride.users.models import User, Profile
 
+# Serializers
+from cride.users.serializers.profiles import ProfileModelSerializer
+
 
 class UserModelSerializer(serializers.ModelSerializer):
     """User model serializer."""
+
+    profile = ProfileModelSerializer(read_only=True)
 
     class Meta:
         model = User
         fields = (
             'username',
+            'profile',
             'first_name',
             'last_name',
             'email',
@@ -71,7 +77,7 @@ class UserSignUpSerializer(serializers.Serializer):
         """Handle user creation."""
         data.pop('password_confirmation')
         # Create user is an special method.
-        user = User.objects.create_user(**data, is_verified=False)
+        user = User.objects.create_user(**data, is_verified=False, is_client=True)
         Profile.objects.create(user=user)
         self.send_confirmation_email(user)
         return user
